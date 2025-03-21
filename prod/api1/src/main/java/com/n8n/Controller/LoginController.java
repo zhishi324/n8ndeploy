@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController {
 
-    @RequestMapping("/dev/api/login")
+    @RequestMapping("/prod/api/login")
     // 修改返回类型为 ResponseEntity<String>
     public ResponseEntity<String> login(ModelMap map, @RequestParam String username, @RequestParam String password) {
 
