@@ -1,103 +1,97 @@
- # 咨询工单转交系统 UI 设计规范
+ # 咨询工单转交系统UI设计稿
 
 ## 文档信息
 - 作者：小军
 - 最后更新日期：2025-03-21
-- 文档状态：已评审
+- 文档状态：初稿
 
-## 1. 设计系统
+## 1. 核心功能界面设计
 
-### 1.1 色彩系统
-```svg
-<svg width="400" height="60">
-    <rect x="0" y="0" width="80" height="40" fill="#1890FF" />
-    <text x="20" y="60" fill="black">主色</text>
-    <rect x="100" y="0" width="80" height="40" fill="#52C41A" />
-    <text x="110" y="60" fill="black">成功色</text>
-    <rect x="200" y="0" width="80" height="40" fill="#FAAD14" />
-    <text x="210" y="60" fill="black">警告色</text>
-    <rect x="300" y="0" width="80" height="40" fill="#FF4D4F" />
-    <text x="310" y="60" fill="black">错误色</text>
+### 1.1 工单创建界面
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+    <rect x="10" y="10" width="380" height="280" fill="white" stroke="#ccc"/>
+    <text x="150" y="40" font-size="16">工单创建</text>
+    <rect x="30" y="60" width="340" height="40" fill="#f5f5f5" rx="4"/>
+    <text x="40" y="85">工单标题</text>
+    <rect x="30" y="110" width="340" height="40" fill="#f5f5f5" rx="4"/>
+    <text x="40" y="135">客户信息</text>
+    <rect x="30" y="160" width="340" height="60" fill="#f5f5f5" rx="4"/>
+    <text x="40" y="185">问题描述</text>
+    <rect x="30" y="230" width="160" height="30" fill="#f5f5f5" rx="4"/>
+    <text x="40" y="250">优先级</text>
+    <rect x="220" y="230" width="70" height="30" fill="#1890ff" rx="4"/>
+    <text x="235" y="250" fill="white">提交</text>
+    <rect x="300" y="230" width="70" height="30" fill="white" stroke="#ccc" rx="4"/>
+    <text x="315" y="250">取消</text>
 </svg>
-```
 
-### 1.2 字体规范
-- 标题: Helvetica Neue, 18px, Bold
-- 正文: PingFang SC, 14px, Regular
-- 次要文字: PingFang SC, 12px, Regular
-
-### 1.3 间距规范
-- 内边距: 16px/24px
-- 外边距: 16px/24px
-- 组件间距: 24px
-
-## 2. 界面设计
-
-### 2.1 工单列表页
-```svg
-<svg width="800" height="600">
-    <rect x="0" y="0" width="800" height="600" fill="#F0F2F5"/>
-    <!-- 顶部导航 -->
-    <rect x="0" y="0" width="800" height="64" fill="#FFFFFF"/>
-    <!-- 搜索区域 -->
-    <rect x="24" y="88" width="752" height="56" fill="#FFFFFF"/>
-    <!-- 列表区域 -->
-    <rect x="24" y="160" width="752" height="420" fill="#FFFFFF"/>
+### 1.2 工单转交界面
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+    <rect x="10" y="10" width="380" height="280" fill="white" stroke="#ccc"/>
+    <text x="150" y="40" font-size="16">工单转交</text>
+    <rect x="30" y="60" width="340" height="40" fill="#f5f5f5" rx="4"/>
+    <text x="40" y="85">选择部门</text>
+    <rect x="30" y="110" width="340" height="40" fill="#f5f5f5" rx="4"/>
+    <text x="40" y="135">选择处理人</text>
+    <rect x="30" y="160" width="340" height="60" fill="#f5f5f5" rx="4"/>
+    <text x="40" y="185">转交原因</text>
+    <rect x="220" y="230" width="70" height="30" fill="#1890ff" rx="4"/>
+    <text x="235" y="250" fill="white">确认</text>
+    <rect x="300" y="230" width="70" height="30" fill="white" stroke="#ccc" rx="4"/>
+    <text x="315" y="250">取消</text>
 </svg>
-```
 
-### 2.2 工单转交弹窗
-```svg
-<svg width="400" height="300">
-    <rect x="0" y="0" width="400" height="300" fill="#FFFFFF"/>
-    <!-- 标题区 -->
-    <rect x="0" y="0" width="400" height="48" fill="#F7F7F7"/>
-    <!-- 表单区 -->
-    <rect x="24" y="72" width="352" height="180" fill="#FFFFFF"/>
-    <!-- 按钮区 -->
-    <rect x="0" y="252" width="400" height="48" fill="#F7F7F7"/>
+### 1.3 工单列表界面
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+    <rect x="10" y="10" width="380" height="280" fill="white" stroke="#ccc"/>
+    <text x="150" y="40" font-size="16">工单列表</text>
+    <rect x="30" y="60" width="340" height="200" fill="#f5f5f5" rx="4"/>
+    <line x1="30" y1="100" x2="370" y2="100" stroke="#ccc"/>
+    <text x="40" y="85">工单编号</text>
+    <text x="120" y="85">标题</text>
+    <text x="200" y="85">状态</text>
+    <text x="280" y="85">处理人</text>
+    <text x="340" y="85">操作</text>
 </svg>
-```
 
-## 3. 组件规范
+## 2. 交互说明
 
-### 3.1 按钮规范
-- 主按钮: 蓝色填充 (#1890FF)
-- 次按钮: 白色描边
-- 高度: 32px
-- 圆角: 2px
+### 2.1 颜色规范
+- 主色：#1890ff
+- 背景色：#f5f5f5
+- 边框色：#cccccc
+- 文字色：#000000
 
-### 3.2 输入框规范
-- 高度: 32px
-- 内边距: 8px 12px
-- 边框颜色: #D9D9D9
-- 圆角: 2px
+### 2.2 字体规范
+- 标题：16px
+- 正文：14px
+- 按钮文字：14px
 
-### 3.3 表格规范
-- 行高: 54px
-- 表头背景: #FAFAFA
-- 分割线颜色: #F0F0F0
+### 2.3 间距规范
+- 页面边距：20px
+- 组件间距：10px
+- 内边距：15px
 
-## 4. 响应式设计
+## 3. 响应式设计
+- 桌面端最小宽度：1024px
+- 平板端最小宽度：768px
+- 移动端最小宽度：375px
 
-### 4.1 断点设定
-- 移动端: <768px
-- 平板: 768px~1024px
-- 桌面: >1024px
+## 4. 交互状态
 
-### 4.2 布局适配
-- 移动端: 单列布局
-- 平板: 双列布局
-- 桌面: 三列布局
+### 4.1 按钮状态
+- 默认状态
+- 悬停状态
+- 点击状态
+- 禁用状态
 
-## 5. 交互规范
+### 4.2 表单验证
+- 必填项提示
+- 错误提示
+- 成功提示
 
-### 5.1 加载状态
-- 列表加载: 骨架屏
-- 提交操作: 按钮loading
-- 页面切换: 顶部进度条
-
-### 5.2 反馈机制
-- 成功提示: 绿色轻提示
-- 警告提示: 黄色轻提示
-- 错误提示: 红色轻提示
+## 5. 辅助功能
+- 键盘快捷键
+- 页面帮助提示
+- 加载状态提示
+- 操作确认提示
