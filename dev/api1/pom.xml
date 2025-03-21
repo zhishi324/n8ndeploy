@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.n8n</groupId>
-	<artifactId>XpengN8n</artifactId>
+	<artifactId>XpengN8n-dev</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
