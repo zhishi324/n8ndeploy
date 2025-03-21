@@ -1,61 +1,71 @@
-# 系统概要设计文档
+# 咨询工单转交系统概要设计文档
 
 ## 文档信息
 - 作者：小强
 - 最后更新日期：2025-03-21
+- 文档状态：已评审
 
 ## 1. 数据结构设计
 
-### 1.1 用户表(users)
+### 1.1 工单表(ticket)
 ```sql
-CREATE TABLE users (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '用户ID',
-    username VARCHAR(50) NOT NULL COMMENT '用户名',
-    password VARCHAR(255) NOT NULL COMMENT '密码',
-    email VARCHAR(100) NOT NULL COMMENT '邮箱',
-    status TINYINT NOT NULL DEFAULT 1 COMMENT '状态: 1-正常 0-禁用',
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-    UNIQUE KEY uk_username (username),
-    UNIQUE KEY uk_email (email)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
+CREATE TABLE `ticket` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '工单ID',
+  `title` varchar(200) NOT NULL COMMENT '工单标题',
+  `customer_id` bigint NOT NULL COMMENT '客户ID',
+  `description` text COMMENT '问题描述',
+  `priority` tinyint NOT NULL DEFAULT '0' COMMENT '优先级:0-普通,1-中等,2-紧急',
+  `type` tinyint NOT NULL COMMENT '工单类型:0-咨询,1-投诉,2-建议,3-其他',
+  `status` tinyint NOT NULL DEFAULT '0' COMMENT '状态:0-待处理,1-处理中,2-已完成',
+  `assignee_id` bigint COMMENT '处理人ID',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_customer` (`customer_id`),
+  KEY `idx_assignee` (`assignee_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='工单表';
 ```
 
-### 1.2 角色表(roles)
+### 1.2 工单转交记录表(ticket_transfer)
 ```sql
-CREATE TABLE roles (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '角色ID',
-    role_name VARCHAR(50) NOT NULL COMMENT '角色名称',
-    description VARCHAR(200) COMMENT '角色描述',
-    status TINYINT NOT NULL DEFAULT 1 COMMENT '状态: 1-正常 0-禁用',
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-    UNIQUE KEY uk_role_name (role_name)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='角色表';
+CREATE TABLE `ticket_transfer` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '记录ID',
+  `ticket_id` bigint NOT NULL COMMENT '工单ID',
+  `from_user_id` bigint NOT NULL COMMENT '转交人ID',
+  `to_user_id` bigint NOT NULL COMMENT '接收人ID',
+  `reason` varchar(500) NOT NULL COMMENT '转交原因',
+  `transfer_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '转交时间',
+  `status` tinyint NOT NULL DEFAULT '0' COMMENT '状态:0-待确认,1-已确认,2-已拒绝',
+  PRIMARY KEY (`id`),
+  KEY `idx_ticket` (`ticket_id`),
+  FOREIGN KEY (`ticket_id`) REFERENCES `ticket` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='工单转交记录表';
 ```
 
 ## 2. 实体关系图
 
 ```mermaid
 erDiagram
-    USERS ||--o{ USER_ROLES : has
-    USER_ROLES }o--|| ROLES : belongs_to
-    USERS {
-        bigint id PK
-        string username
-        string password
-        string email
+    TICKET ||--o{ TICKET_TRANSFER : contains
+    TICKET {
+        bigint id
+        string title
+        bigint customer_id
+        text description
+        int priority
+        int type
         int status
+        bigint assignee_id
+        datetime created_at
     }
-    ROLES {
-        bigint id PK
-        string role_name
-        string description
+    TICKET_TRANSFER {
+        bigint id
+        bigint ticket_id
+        bigint from_user_id
+        bigint to_user_id
+        string reason
+        datetime transfer_time
         int status
-    }
-    USER_ROLES {
-        bigint user_id FK
-        bigint role_id FK
     }
 ```
 
@@ -67,59 +77,97 @@ sequenceDiagram
     participant S as 服务端
     participant DB as 数据库
     
-    C->>S: 1. 登录请求
-    S->>DB: 2. 查询用户信息
-    DB-->>S: 3. 返回用户数据
-    S->>S: 4. 验证密码
-    alt 验证成功
-        S-->>C: 5a. 返回token
-    else 验证失败
-        S-->>C: 5b. 返回错误信息
-    end
+    C->>S: 1.创建工单请求
+    S->>DB: 2.保存工单信息
+    DB-->>S: 3.返回工单ID
+    S-->>C: 4.创建成功响应
+    
+    C->>S: 5.发起工单转交
+    S->>DB: 6.查询工单状态
+    DB-->>S: 7.返回工单信息
+    S->>DB: 8.创建转交记录
+    S->>S: 9.发送通知
+    DB-->>S: 10.确认创建完成
+    S-->>C: 11.转交成功响应
 ```
 
 ## 4. 关键接口设计
 
-### 4.1 用户登录接口
+### 4.1 创建工单
 
-- 路径: `/api/v1/auth/login`
-- 方法: POST
-- 请求格式:
-```json
-{
-    "username": "string",
-    "password": "string"
-}
 ```
-- 响应格式:
-```json
+POST /api/v1/tickets
+
+Request:
 {
-    "code": 200,
+    "title": "string",
+    "customerId": "long",
+    "description": "string",
+    "priority": "int",
+    "type": "int"
+}
+
+Response:
+{
+    "code": 0,
     "message": "success",
     "data": {
-        "token": "string",
-        "userId": "number",
-        "username": "string"
+        "ticketId": "long"
     }
 }
 ```
 
-### 4.2 用户信息查询接口
+### 4.2 转交工单
 
-- 路径: `/api/v1/users/{id}`
-- 方法: GET
-- 请求参数: 
-  - id: 用户ID
-- 响应格式:
-```json
+```
+POST /api/v1/tickets/{ticketId}/transfer
+
+Request:
 {
-    "code": 200,
+    "toUserId": "long",
+    "reason": "string"
+}
+
+Response:
+{
+    "code": 0,
     "message": "success",
     "data": {
-        "id": "number",
-        "username": "string",
-        "email": "string",
-        "status": "number"
+        "transferId": "long"
+    }
+}
+```
+
+### 4.3 确认工单转交
+
+```
+PUT /api/v1/tickets/transfer/{transferId}/confirm
+
+Response:
+{
+    "code": 0,
+    "message": "success"
+}
+```
+
+### 4.4 查询工单列表
+
+```
+GET /api/v1/tickets?page=1&size=10
+
+Response:
+{
+    "code": 0,
+    "message": "success", 
+    "data": {
+        "total": "long",
+        "items": [{
+            "id": "long",
+            "title": "string",
+            "status": "int",
+            "priority": "int",
+            "createTime": "datetime"
+        }]
     }
 }
 ```
