@@ -1,132 +1,101 @@
- # 咨询工单转交系统 UI 设计规范文档
+ # UI设计规范文档
 
-| 文档信息 | |
-|----------|---------|
-| 作者 | 小军 |
-| 最后更新日期 | 2025-03-21 |
-| 文档状态 | 已完成 |
+## 文档信息
+- 设计师：小军
+- 最后更新日期：2025-03-21
 
-## 1. 设计规范
+## 1. 布局规范
 
-### 1.1 色彩规范
-
-```svg
-<svg width="400" height="60">
-  <rect x="10" y="10" width="60" height="40" fill="#1890FF" />
-  <text x="80" y="35" fill="black">主色 #1890FF</text>
-  <rect x="160" y="10" width="60" height="40" fill="#52C41A" />
-  <text x="230" y="35" fill="black">成功 #52C41A</text>
-  <rect x="310" y="10" width="60" height="40" fill="#FF4D4F" />
-  <text x="380" y="35" fill="black">警告 #FF4D4F</text>
-</svg>
-```
-
-### 1.2 字体规范
-- 标题: PingFang SC, 16px, Bold
-- 正文: PingFang SC, 14px, Regular
-- 说明文本: PingFang SC, 12px, Regular
-
-## 2. 页面布局
-
-### 2.1 工单列表页
-
+### 1.1 页面框架
 ```svg
 <svg width="800" height="600">
-  <rect x="0" y="0" width="800" height="60" fill="#FFFFFF" />
-  <rect x="20" y="15" width="760" height="30" fill="#F5F5F5" />
-  <text x="30" y="35" fill="#333333">筛选条件</text>
-  
-  <rect x="0" y="70" width="800" height="530" fill="#FFFFFF" />
-  <rect x="20" y="90" width="760" height="40" fill="#FAFAFA" />
-  <text x="30" y="115" fill="#333333">工单列表</text>
-  
-  <rect x="20" y="140" width="760" height="450" fill="#FFFFFF" stroke="#E8E8E8" />
+  <rect x="0" y="0" width="800" height="80" fill="#f5f5f5"/>
+  <rect x="0" y="80" width="800" height="440" fill="#ffffff"/>
+  <rect x="0" y="520" width="800" height="80" fill="#f5f5f5"/>
+  <text x="370" y="45" font-family="Arial" font-size="16">Header</text>
+  <text x="370" y="300" font-family="Arial" font-size="16">Main Content</text>
+  <text x="370" y="560" font-family="Arial" font-size="16">Footer</text>
 </svg>
 ```
 
-### 2.2 工单转交页
+### 1.2 网格系统
+- 页面宽度：1200px
+- 列数：12列
+- 列间距：20px
+- 边距：30px
 
-```svg
-<svg width="500" height="400">
-  <rect x="0" y="0" width="500" height="400" fill="#FFFFFF" />
-  <rect x="20" y="20" width="460" height="360" fill="#FFFFFF" stroke="#E8E8E8" />
-  
-  <text x="40" y="60" fill="#333333">选择转交人</text>
-  <rect x="40" y="80" width="420" height="40" fill="#F5F5F5" />
-  
-  <text x="40" y="160" fill="#333333">转交原因</text>
-  <rect x="40" y="180" width="420" height="100" fill="#F5F5F5" />
-  
-  <rect x="280" y="320" width="80" height="32" fill="#1890FF" rx="4" />
-  <text x="300" y="342" fill="#FFFFFF">确认</text>
-  
-  <rect x="380" y="320" width="80" height="32" fill="#F5F5F5" rx="4" />
-  <text x="400" y="342" fill="#333333">取消</text>
-</svg>
-```
+## 2. 设计元素
 
-## 3. 交互组件
+### 2.1 色彩规范
+- 主色：#2196F3
+- 辅助色：#FF4081
+- 背景色：#FFFFFF
+- 文字色：#333333
+- 边框色：#E0E0E0
 
-### 3.1 按钮样式
+### 2.2 字体规范
+- 主标题：24px
+- 副标题：20px
+- 正文：16px
+- 辅助文本：14px
+- 字体族：系统默认字体
 
-```svg
-<svg width="400" height="40">
-  <rect x="10" y="5" width="80" height="32" fill="#1890FF" rx="4" />
-  <text x="30" y="27" fill="#FFFFFF">主按钮</text>
-  
-  <rect x="110" y="5" width="80" height="32" fill="#FFFFFF" stroke="#1890FF" rx="4" />
-  <text x="130" y="27" fill="#1890FF">次按钮</text>
-  
-  <rect x="210" y="5" width="80" height="32" fill="#F5F5F5" rx="4" />
-  <text x="230" y="27" fill="#333333">普通</text>
-</svg>
-```
+### 2.3 组件规范
 
-### 3.2 表单控件
-
+#### 按钮
 ```svg
 <svg width="400" height="120">
-  <rect x="10" y="10" width="380" height="32" fill="#FFFFFF" stroke="#D9D9D9" rx="4" />
-  <text x="20" y="30" fill="#333333">输入框</text>
+  <rect x="20" y="20" width="100" height="36" rx="4" fill="#2196F3"/>
+  <text x="45" y="43" font-family="Arial" font-size="14" fill="white">主按钮</text>
   
-  <rect x="10" y="50" width="380" height="32" fill="#FFFFFF" stroke="#D9D9D9" rx="4" />
-  <text x="20" y="70" fill="#BFBFBF">下拉选择框</text>
+  <rect x="140" y="20" width="100" height="36" rx="4" fill="#ffffff" stroke="#2196F3"/>
+  <text x="165" y="43" font-family="Arial" font-size="14" fill="#2196F3">次按钮</text>
   
-  <rect x="10" y="90" width="380" height="20" fill="#FFFFFF" />
-  <circle cx="20" cy="100" r="8" fill="#1890FF" />
-  <text x="40" y="105" fill="#333333">单选框</text>
+  <rect x="260" y="20" width="100" height="36" rx="4" fill="#f5f5f5"/>
+  <text x="285" y="43" font-family="Arial" font-size="14" fill="#666666">禁用</text>
 </svg>
 ```
 
-## 4. 响应式设计
-
-- 桌面端最小宽度: 1280px
-- 平板端最小宽度: 768px
-- 移动端最小宽度: 375px
-
-## 5. 组件状态
-
-### 5.1 Loading 状态
-
+#### 输入框
 ```svg
-<svg width="200" height="100">
-  <circle cx="100" cy="50" r="20" fill="none" stroke="#1890FF" stroke-width="4">
-    <animateTransform
-      attributeName="transform"
-      type="rotate"
-      from="0 100 50"
-      to="360 100 50"
-      dur="1s"
-      repeatCount="indefinite"/>
-  </circle>
+<svg width="400" height="60">
+  <rect x="20" y="10" width="360" height="40" rx="4" fill="white" stroke="#E0E0E0"/>
+  <text x="35" y="35" font-family="Arial" font-size="14" fill="#999999">请输入...</text>
 </svg>
 ```
 
-### 5.2 空状态
+## 3. 响应式设计
 
-```svg
-<svg width="200" height="200">
-  <rect x="50" y="50" width="100" height="100" fill="#F5F5F5" />
-  <text x="70" y="110" fill="#999999">暂无数据</text>
-</svg>
-```
+### 3.1 断点设置
+- 移动端：< 768px
+- 平板：768px - 1024px
+- 桌面端：> 1024px
+
+### 3.2 适配原则
+- 移动优先
+- 弹性布局
+- 内容优先级排序
+
+## 4. 交互规范
+
+### 4.1 状态反馈
+- 悬浮：透明度80%
+- 点击：透明度60%
+- 加载：显示loading动画
+- 错误：红色提示
+
+### 4.2 动画效果
+- 过渡时长：0.3s
+- 缓动函数：ease-in-out
+- 动画范围：位置、透明度、缩放
+
+## 5. 无障碍设计
+- 适当的颜色对比度
+- 键盘可访问性
+- 屏幕阅读器支持
+- 焦点状态明确
+
+## 6. 设计资源
+- 图标库：Material Icons
+- 图片规范：2x图，支持WebP格式
+- 设计源文件：Sketch/Figma格式
