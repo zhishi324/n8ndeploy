@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工单转交系统</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .btn {
+            padding: 8px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .ticket-list {
+            margin-top: 20px;
+        }
+        .ticket-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>工单转交系统</h1>
+        
+        <div class="form-group">
+            <label for="ticketId">工单编号</label>
+            <input type="text" id="ticketId" placeholder="请输入工单编号">
+        </div>
+
+        <div class="form-group">
+            <label for="department">转交部门</label>
+            <select id="department">
+                <option value="">请选择部门</option>
+                <option value="1">技术部</option>
+                <option value="2">客服部</option>
+                <option value="3">销售部</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="handler">处理人</label>
+            <select id="handler">
+                <option value="">请选择处理人</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="reason">转交原因</label>
+            <input type="text" id="reason" placeholder="请输入转交原因">
+        </div>
+
+        <button class="btn" onclick="transferTicket()">确认转交</button>
+
+        <div class="ticket-list">
+            <h2>工单列表</h2>
+            <div class="ticket-item">
+                <h3>工单#12345</h3>
+                <p>状态：处理中</p>
+                <p>当前处理人：张三</p>
+                <p>创建时间：2024-01-20 10:30:00</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function transferTicket() {
+            const ticketId = document.getElementById('ticketId').value;
+            const department = document.getElementById('department').value;
+            const handler = document.getElementById('handler').value;
+            const reason = document.getElementById('reason').value;
+
+            if (!ticketId || !department || !handler || !reason) {
+                alert('请填写完整信息');
+                return;
+            }
+
+            // 模拟API调用
+            console.log('转交工单', {
+                ticketId,
+                department,
+                handler,
+                reason
+            });
+            
+            alert('工单转交成功');
+        }
+
+        // 模拟根据部门加载处理人
+        document.getElementById('department').addEventListener('change', function(e) {
+            const handlerSelect = document.getElementById('handler');
+            handlerSelect.innerHTML = '<option value="">请选择处理人</option>';
+            
+            if (e.target.value) {
+                // 模拟加载该部门的处理人
+                const handlers = [
+                    {id: 1, name: '张三'},
+                    {id: 2, name: '李四'},
+                    {id: 3, name: '王五'}
+                ];
+                
+                handlers.forEach(handler => {
+                    const option = document.createElement('option');
+                    option.value = handler.id;
+                    option.textContent = handler.name;
+                    handlerSelect.appendChild(option);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
