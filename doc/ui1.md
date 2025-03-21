@@ -1,101 +1,103 @@
- # UI设计规范文档
+ # 咨询工单转交系统 UI 设计规范
 
 ## 文档信息
-- 设计师：小军
+- 作者：小军
 - 最后更新日期：2025-03-21
+- 文档状态：已评审
 
-## 1. 布局规范
+## 1. 设计系统
 
-### 1.1 页面框架
-```svg
-<svg width="800" height="600">
-  <rect x="0" y="0" width="800" height="80" fill="#f5f5f5"/>
-  <rect x="0" y="80" width="800" height="440" fill="#ffffff"/>
-  <rect x="0" y="520" width="800" height="80" fill="#f5f5f5"/>
-  <text x="370" y="45" font-family="Arial" font-size="16">Header</text>
-  <text x="370" y="300" font-family="Arial" font-size="16">Main Content</text>
-  <text x="370" y="560" font-family="Arial" font-size="16">Footer</text>
-</svg>
-```
-
-### 1.2 网格系统
-- 页面宽度：1200px
-- 列数：12列
-- 列间距：20px
-- 边距：30px
-
-## 2. 设计元素
-
-### 2.1 色彩规范
-- 主色：#2196F3
-- 辅助色：#FF4081
-- 背景色：#FFFFFF
-- 文字色：#333333
-- 边框色：#E0E0E0
-
-### 2.2 字体规范
-- 主标题：24px
-- 副标题：20px
-- 正文：16px
-- 辅助文本：14px
-- 字体族：系统默认字体
-
-### 2.3 组件规范
-
-#### 按钮
-```svg
-<svg width="400" height="120">
-  <rect x="20" y="20" width="100" height="36" rx="4" fill="#2196F3"/>
-  <text x="45" y="43" font-family="Arial" font-size="14" fill="white">主按钮</text>
-  
-  <rect x="140" y="20" width="100" height="36" rx="4" fill="#ffffff" stroke="#2196F3"/>
-  <text x="165" y="43" font-family="Arial" font-size="14" fill="#2196F3">次按钮</text>
-  
-  <rect x="260" y="20" width="100" height="36" rx="4" fill="#f5f5f5"/>
-  <text x="285" y="43" font-family="Arial" font-size="14" fill="#666666">禁用</text>
-</svg>
-```
-
-#### 输入框
+### 1.1 色彩系统
 ```svg
 <svg width="400" height="60">
-  <rect x="20" y="10" width="360" height="40" rx="4" fill="white" stroke="#E0E0E0"/>
-  <text x="35" y="35" font-family="Arial" font-size="14" fill="#999999">请输入...</text>
+    <rect x="0" y="0" width="80" height="40" fill="#1890FF" />
+    <text x="20" y="60" fill="black">主色</text>
+    <rect x="100" y="0" width="80" height="40" fill="#52C41A" />
+    <text x="110" y="60" fill="black">成功色</text>
+    <rect x="200" y="0" width="80" height="40" fill="#FAAD14" />
+    <text x="210" y="60" fill="black">警告色</text>
+    <rect x="300" y="0" width="80" height="40" fill="#FF4D4F" />
+    <text x="310" y="60" fill="black">错误色</text>
 </svg>
 ```
 
-## 3. 响应式设计
+### 1.2 字体规范
+- 标题: Helvetica Neue, 18px, Bold
+- 正文: PingFang SC, 14px, Regular
+- 次要文字: PingFang SC, 12px, Regular
 
-### 3.1 断点设置
-- 移动端：< 768px
-- 平板：768px - 1024px
-- 桌面端：> 1024px
+### 1.3 间距规范
+- 内边距: 16px/24px
+- 外边距: 16px/24px
+- 组件间距: 24px
 
-### 3.2 适配原则
-- 移动优先
-- 弹性布局
-- 内容优先级排序
+## 2. 界面设计
 
-## 4. 交互规范
+### 2.1 工单列表页
+```svg
+<svg width="800" height="600">
+    <rect x="0" y="0" width="800" height="600" fill="#F0F2F5"/>
+    <!-- 顶部导航 -->
+    <rect x="0" y="0" width="800" height="64" fill="#FFFFFF"/>
+    <!-- 搜索区域 -->
+    <rect x="24" y="88" width="752" height="56" fill="#FFFFFF"/>
+    <!-- 列表区域 -->
+    <rect x="24" y="160" width="752" height="420" fill="#FFFFFF"/>
+</svg>
+```
 
-### 4.1 状态反馈
-- 悬浮：透明度80%
-- 点击：透明度60%
-- 加载：显示loading动画
-- 错误：红色提示
+### 2.2 工单转交弹窗
+```svg
+<svg width="400" height="300">
+    <rect x="0" y="0" width="400" height="300" fill="#FFFFFF"/>
+    <!-- 标题区 -->
+    <rect x="0" y="0" width="400" height="48" fill="#F7F7F7"/>
+    <!-- 表单区 -->
+    <rect x="24" y="72" width="352" height="180" fill="#FFFFFF"/>
+    <!-- 按钮区 -->
+    <rect x="0" y="252" width="400" height="48" fill="#F7F7F7"/>
+</svg>
+```
 
-### 4.2 动画效果
-- 过渡时长：0.3s
-- 缓动函数：ease-in-out
-- 动画范围：位置、透明度、缩放
+## 3. 组件规范
 
-## 5. 无障碍设计
-- 适当的颜色对比度
-- 键盘可访问性
-- 屏幕阅读器支持
-- 焦点状态明确
+### 3.1 按钮规范
+- 主按钮: 蓝色填充 (#1890FF)
+- 次按钮: 白色描边
+- 高度: 32px
+- 圆角: 2px
 
-## 6. 设计资源
-- 图标库：Material Icons
-- 图片规范：2x图，支持WebP格式
-- 设计源文件：Sketch/Figma格式
+### 3.2 输入框规范
+- 高度: 32px
+- 内边距: 8px 12px
+- 边框颜色: #D9D9D9
+- 圆角: 2px
+
+### 3.3 表格规范
+- 行高: 54px
+- 表头背景: #FAFAFA
+- 分割线颜色: #F0F0F0
+
+## 4. 响应式设计
+
+### 4.1 断点设定
+- 移动端: <768px
+- 平板: 768px~1024px
+- 桌面: >1024px
+
+### 4.2 布局适配
+- 移动端: 单列布局
+- 平板: 双列布局
+- 桌面: 三列布局
+
+## 5. 交互规范
+
+### 5.1 加载状态
+- 列表加载: 骨架屏
+- 提交操作: 按钮loading
+- 页面切换: 顶部进度条
+
+### 5.2 反馈机制
+- 成功提示: 绿色轻提示
+- 警告提示: 黄色轻提示
+- 错误提示: 红色轻提示
