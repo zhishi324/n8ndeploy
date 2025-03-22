@@ -1,92 +1,105 @@
- # 工单转交系统 UI 设计方案
+ # 咨询工单转交系统 UI 设计方案
 
-## 1. 总体设计风格
+## 1. 系统整体布局
 
-- 配色方案：#1890FF(主色)、#F5F5F5(背景)、#FFFFFF(内容区)、#52C41A(成功)、#FAAD14(警告)
-- 字体：系统默认字体，标题16px，正文14px，次要文字12px
-- 布局：左侧固定导航，右侧自适应内容区
-
-## 2. 界面布局
-
-<svg width="800" height="600">
-  <!-- 顶部导航 -->
-  <rect x="0" y="0" width="800" height="60" fill="#FFFFFF"/>
-  <text x="20" y="35" font-size="18">工单转交系统</text>
-  
-  <!-- 左侧菜单 -->
-  <rect x="0" y="60" width="200" height="540" fill="#001529"/>
-  
-  <!-- 内容区 -->
-  <rect x="200" y="60" width="600" height="540" fill="#F5F5F5"/>
+<details>
+```
+@layout.svg
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1440" height="900">
+  <rect x="0" y="0" width="240" height="900" fill="#001529"/>
+  <rect x="0" y="0" width="1440" height="64" fill="#FFFFFF"/>
+  <rect x="240" y="64" width="1200" height="836" fill="#F0F2F5"/>
 </svg>
+@layout.svg
+```
+</details>
 
-## 3. 核心功能界面
+## 2. 工单列表页
 
-### 3.1 工单列表
-
-<svg width="800" height="400">
-  <!-- 工单列表表格 -->
-  <rect x="0" y="0" width="780" height="380" fill="#FFFFFF"/>
-  <line x1="0" y1="40" x2="780" y2="40" stroke="#E8E8E8"/>
-  
-  <!-- 表头 -->
-  <text x="20" y="25">工单列表</text>
-  <rect x="680" y="10" width="80" height="28" fill="#1890FF"/>
-  <text x="695" y="28" fill="white">新建工单</text>
+<details>
+```
+@ticket-list.svg
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1160" height="800">
+  <rect x="20" y="20" width="1120" height="760" fill="#FFFFFF" rx="2"/>
+  <rect x="40" y="40" width="1080" height="50" fill="#FAFAFA"/>
+  <!-- 搜索栏 -->
+  <rect x="40" y="110" width="1080" height="600" fill="#FFFFFF"/>
+  <!-- 表格内容 -->
 </svg>
+@ticket-list.svg
+```
+</details>
 
-### 3.2 工单详情
+## 3. 工单转交弹窗
 
-<svg width="800" height="500">
-  <!-- 详情卡片 -->
-  <rect x="0" y="0" width="780" height="480" fill="#FFFFFF"/>
-  
-  <!-- 基本信息区 -->
-  <rect x="20" y="20" width="740" height="120" fill="#F5F5F5"/>
-  
-  <!-- 处理记录区 -->
-  <rect x="20" y="160" width="740" height="300" fill="#F5F5F5"/>
+<details>
+```
+@transfer-modal.svg
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="520" height="400">
+  <rect x="0" y="0" width="520" height="400" fill="#FFFFFF" rx="2"/>
+  <rect x="0" y="0" width="520" height="55" fill="#FAFAFA"/>
+  <!-- 表单内容 -->
 </svg>
+@transfer-modal.svg
+```
+</details>
 
-## 4. 交互设计说明
+## 4. 工单详情页
 
-### 4.1 工单转交流程
-- 点击转交按钮弹出模态框
-- 可选择转交部门或人员
-- 必填转交原因
-- 确认后发送通知
+<details>
+```
+@ticket-detail.svg
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1160" height="800">
+  <rect x="20" y="20" width="720" height="760" fill="#FFFFFF" rx="2"/>
+  <rect x="760" y="20" width="380" height="760" fill="#FFFFFF" rx="2"/>
+</svg>
+@ticket-detail.svg
+```
+</details>
 
-### 4.2 状态流转
-- 使用不同颜色区分工单状态
-- 状态变更时自动记录操作日志
-- 可查看完整处理记录
+## 5. 设置页面
 
-## 5. 响应式适配
+<details>
+```
+@settings.svg
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1160" height="800">
+  <rect x="20" y="20" width="240" height="760" fill="#FFFFFF" rx="2"/>
+  <rect x="280" y="20" width="860" height="760" fill="#FFFFFF" rx="2"/>
+</svg>
+@settings.svg
+```
+</details>
 
-- 桌面端（>1200px）：完整三栏布局
-- 平板端（>768px）：收起左侧导航
-- 移动端（<768px）：单栏布局，菜单折叠
+## 6. 颜色规范
 
-## 6. 组件规范
+- 主色：#1890FF
+- 成功色：#52C41A
+- 警告色：#FAAD14
+- 错误色：#F5222D
+- 中性色：#000000、#FFFFFF、#F0F2F5
 
-### 6.1 按钮
-- 主要按钮：#1890FF
-- 次要按钮：#FFFFFF，带边框
-- 危险操作：#FF4D4F
+## 7. 组件规范
 
-### 6.2 表单
-- 输入框统一高度40px
-- 必填项标红星号
-- 实时表单验证
+- 字体：
+  - 标题：16px
+  - 正文：14px
+  - 辅助文字：12px
+  
+- 间距：
+  - 内边距：24px
+  - 外边距：16px
+  - 组件间距：8px
 
-## 7. 数据展示
-
-### 7.1 表格
-- 分页：默认20条/页
-- 支持排序和筛选
-- 支持批量操作
-
-### 7.2 统计图表
-- 柱状图展示工单量
-- 饼图展示类型分布
-- 折线图展示处理效率
+- 圆角：
+  - 大圆角：4px
+  - 小圆角：2px
