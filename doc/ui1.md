@@ -2,104 +2,90 @@
 
 ## 1. 系统整体布局
 
-<details>
-```
-@layout.svg
+@{layout}.svg
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="1440" height="900">
-  <rect x="0" y="0" width="240" height="900" fill="#001529"/>
-  <rect x="0" y="0" width="1440" height="64" fill="#FFFFFF"/>
-  <rect x="240" y="64" width="1200" height="836" fill="#F0F2F5"/>
+  <!-- 顶部导航栏 -->
+  <rect x="0" y="0" width="1440" height="64" fill="#1890FF"/>
+  <!-- 左侧菜单栏 -->
+  <rect x="0" y="64" width="256" height="836" fill="#FFFFFF"/>
+  <!-- 主要内容区域 -->
+  <rect x="256" y="64" width="1184" height="836" fill="#F0F2F5"/>
 </svg>
-@layout.svg
-```
-</details>
 
 ## 2. 工单列表页
 
-<details>
-```
-@ticket-list.svg
+@{workorder-list}.svg
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="1160" height="800">
-  <rect x="20" y="20" width="1120" height="760" fill="#FFFFFF" rx="2"/>
-  <rect x="40" y="40" width="1080" height="50" fill="#FAFAFA"/>
-  <!-- 搜索栏 -->
-  <rect x="40" y="110" width="1080" height="600" fill="#FFFFFF"/>
-  <!-- 表格内容 -->
+<svg width="1184" height="800">
+  <!-- 搜索过滤区 -->
+  <rect x="24" y="24" width="1136" height="64" fill="#FFFFFF"/>
+  <!-- 工单列表表格 -->
+  <rect x="24" y="104" width="1136" height="672" fill="#FFFFFF"/>
 </svg>
-@ticket-list.svg
-```
-</details>
 
-## 3. 工单转交弹窗
+## 3. 工单详情页
 
-<details>
-```
-@transfer-modal.svg
+@{workorder-detail}.svg
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1184" height="800">
+  <!-- 工单基本信息 -->
+  <rect x="24" y="24" width="1136" height="160" fill="#FFFFFF"/>
+  <!-- 处理记录 -->
+  <rect x="24" y="200" width="752" height="576" fill="#FFFFFF"/>
+  <!-- 操作区域 -->
+  <rect x="792" y="200" width="368" height="576" fill="#FFFFFF"/>
+</svg>
+
+## 4. 数据统计页
+
+@{statistics}.svg
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1184" height="800">
+  <!-- 统计卡片 -->
+  <rect x="24" y="24" width="272" height="120" fill="#FFFFFF"/>
+  <rect x="312" y="24" width="272" height="120" fill="#FFFFFF"/>
+  <rect x="600" y="24" width="272" height="120" fill="#FFFFFF"/>
+  <rect x="888" y="24" width="272" height="120" fill="#FFFFFF"/>
+  <!-- 图表区域 -->
+  <rect x="24" y="160" width="1136" height="616" fill="#FFFFFF"/>
+</svg>
+
+## 5. 工单转交弹窗
+
+@{transfer-modal}.svg
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="520" height="400">
-  <rect x="0" y="0" width="520" height="400" fill="#FFFFFF" rx="2"/>
-  <rect x="0" y="0" width="520" height="55" fill="#FAFAFA"/>
-  <!-- 表单内容 -->
+  <!-- 弹窗容器 -->
+  <rect x="0" y="0" width="520" height="400" fill="#FFFFFF"/>
+  <!-- 表单区域 -->
+  <rect x="24" y="64" width="472" height="272" fill="#F7F9FC"/>
 </svg>
-@transfer-modal.svg
-```
-</details>
 
-## 4. 工单详情页
-
-<details>
-```
-@ticket-detail.svg
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="1160" height="800">
-  <rect x="20" y="20" width="720" height="760" fill="#FFFFFF" rx="2"/>
-  <rect x="760" y="20" width="380" height="760" fill="#FFFFFF" rx="2"/>
-</svg>
-@ticket-detail.svg
-```
-</details>
-
-## 5. 设置页面
-
-<details>
-```
-@settings.svg
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="1160" height="800">
-  <rect x="20" y="20" width="240" height="760" fill="#FFFFFF" rx="2"/>
-  <rect x="280" y="20" width="860" height="760" fill="#FFFFFF" rx="2"/>
-</svg>
-@settings.svg
-```
-</details>
-
-## 6. 颜色规范
+## 色彩方案
 
 - 主色：#1890FF
+- 背景色：#F0F2F5
+- 文字主色：#000000D9
 - 成功色：#52C41A
 - 警告色：#FAAD14
-- 错误色：#F5222D
-- 中性色：#000000、#FFFFFF、#F0F2F5
+- 错误色：#FF4D4F
 
-## 7. 组件规范
+## 字体规范
 
-- 字体：
-  - 标题：16px
-  - 正文：14px
-  - 辅助文字：12px
-  
-- 间距：
-  - 内边距：24px
-  - 外边距：16px
-  - 组件间距：8px
+- 标题：16px
+- 正文：14px
+- 辅助文字：12px
+- 字体系列：-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto
 
-- 圆角：
-  - 大圆角：4px
-  - 小圆角：2px
+## 组件规范
+
+- 按钮高度：32px
+- 输入框高度：32px
+- 表格行高：54px
+- 间距系统：8px 的倍数
