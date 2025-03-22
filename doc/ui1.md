@@ -1,43 +1,46 @@
  <svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
     <!-- 顶部导航栏 -->
-    <rect x="0" y="0" width="1200" height="60" fill="#1a73e8"/>
+    <rect x="0" y="0" width="1200" height="60" fill="#2C3E50"/>
     <text x="30" y="38" fill="white" font-size="20">咨询工单转交系统</text>
     
-    <!-- 左侧菜单 -->
-    <rect x="0" y="60" width="200" height="740" fill="#f8f9fa"/>
-    <text x="20" y="100" fill="#333" font-size="16">工单管理</text>
-    <text x="20" y="140" fill="#333" font-size="16">转交管理</text>
-    <text x="20" y="180" fill="#333" font-size="16">数据统计</text>
-
-    <!-- 主内容区 -->
-    <rect x="200" y="60" width="1000" height="740" fill="#ffffff"/>
+    <!-- 左侧菜单栏 -->
+    <rect x="0" y="60" width="200" height="740" fill="#34495E"/>
+    <text x="20" y="100" fill="white" font-size="16">工单管理</text>
+    <text x="20" y="140" fill="white" font-size="16">工单转交</text>
+    <text x="20" y="180" fill="white" font-size="16">工单处理</text>
+    
+    <!-- 主内容区域 -->
+    <rect x="200" y="60" width="1000" height="740" fill="#ECF0F1"/>
     
     <!-- 搜索栏 -->
-    <rect x="230" y="80" width="600" height="40" rx="4" fill="#f1f3f4"/>
-    <text x="250" y="105" fill="#666" font-size="14">搜索工单号/客户信息</text>
-    <rect x="850" y="80" width="100" height="40" rx="4" fill="#1a73e8"/>
-    <text x="870" y="105" fill="white" font-size="14">新建</text>
-
+    <rect x="220" y="80" width="400" height="40" fill="white" rx="4"/>
+    <text x="240" y="105" fill="#95A5A6">搜索工单...</text>
+    
+    <!-- 新建工单按钮 -->
+    <rect x="640" y="80" width="120" height="40" fill="#3498DB" rx="4"/>
+    <text x="665" y="105" fill="white">新建工单</text>
+    
     <!-- 工单列表 -->
-    <rect x="230" y="140" width="940" height="640" fill="#ffffff" stroke="#e0e0e0"/>
+    <rect x="220" y="140" width="960" height="640" fill="white"/>
     
     <!-- 表头 -->
-    <rect x="230" y="140" width="940" height="40" fill="#f8f9fa"/>
-    <text x="250" y="165" fill="#333" font-size="14">工单号</text>
-    <text x="400" y="165" fill="#333" font-size="14">客户信息</text>
-    <text x="600" y="165" fill="#333" font-size="14">状态</text>
-    <text x="750" y="165" fill="#333" font-size="14">处理人</text>
-    <text x="900" y="165" fill="#333" font-size="14">创建时间</text>
-    <text x="1050" y="165" fill="#333" font-size="14">操作</text>
-
-    <!-- 列表内容示例 -->
-    <rect x="230" y="180" width="940" height="60" fill="#ffffff"/>
-    <text x="250" y="215" fill="#333" font-size="14">#2024001</text>
-    <text x="400" y="215" fill="#333" font-size="14">张三</text>
-    <rect x="600" y="200" width="60" height="24" rx="12" fill="#e8f5e9"/>
-    <text x="610" y="215" fill="#2e7d32" font-size="12">处理中</text>
-    <text x="750" y="215" fill="#333" font-size="14">客服01</text>
-    <text x="900" y="215" fill="#666" font-size="14">2024-03-22</text>
-    <rect x="1050" y="200" width="50" height="24" rx="4" fill="#1a73e8"/>
-    <text x="1060" y="215" fill="white" font-size="12">详情</text>
+    <rect x="220" y="140" width="960" height="40" fill="#BDC3C7"/>
+    <text x="240" y="165" fill="#2C3E50">工单号</text>
+    <text x="400" y="165" fill="#2C3E50">客户信息</text>
+    <text x="600" y="165" fill="#2C3E50">状态</text>
+    <text x="800" y="165" fill="#2C3E50">处理人</text>
+    <text x="1000" y="165" fill="#2C3E50">操作</text>
+    
+    <!-- 工单记录示例 -->
+    <rect x="220" y="180" width="960" height="50" fill="#F8F9F9"/>
+    <text x="240" y="210" fill="#2C3E50">#001</text>
+    <text x="400" y="210" fill="#2C3E50">张三</text>
+    <text x="600" y="210" fill="#E74C3C">待处理</text>
+    <text x="800" y="210" fill="#2C3E50">李四</text>
+    
+    <!-- 操作按钮 -->
+    <rect x="1000" y="190" width="60" height="30" fill="#3498DB" rx="4"/>
+    <text x="1015" y="210" fill="white">处理</text>
+    <rect x="1070" y="190" width="60" height="30" fill="#E67E22" rx="4"/>
+    <text x="1085" y="210" fill="white">转交</text>
 </svg>
